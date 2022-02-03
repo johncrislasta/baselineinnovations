@@ -170,6 +170,7 @@ $forgotheadline = new HTML\Text('Account Recovery', 'h2');
 $forgotemail = new Controls\TextField(['label' => 'Email'], __vModel('signin.email') );
 $forgotemail->attr(':rules', $emailVal);
 $forgotrequestbutton = new Controls\Basic('button', 'Request password reset' );
+$forgotrequestbutton->addClass('request-password-reset');
 //$forgotrequestbutton->attr('@click', $isVerification.'=true');
 
 /* forgot pass - part 2*/
@@ -260,6 +261,7 @@ $forgotform->attr('v-show', $isVerification.'== false');
 $forgotformpass->attr('v-show', $isVerification.'== true');
 
 $backtosignin = new Controls\Basic('button', 'Back' );
+$backtosignin->addClass('v-btn--text');
 $backtosignin->attrs(['@click' => $isSigningIn .' = true', 'absolute', 'bottom', 'right']);
 $accountrecovery = new Layout\Container( $forgotheadline.$forgotform.$forgotformpass.$backtosignin );
 $accountrecovery->attr('v-show', $isSigningIn .' == false');
@@ -408,7 +410,7 @@ $thankyouheadline = new HTML\Text('Thank You!', 'h2');
 $thankyoubody = new HTML\Text('Thank you for signing up to pray, <strong>{{ '.$selectedDate.' }}.</strong> We will send you a reminder 15 minutes before on the day of.', 'subtitle-1');
 $addtocalendar = new Controls\Basic('button', 'Add to Calendar' );
 $addtocalendar->attr( 'v-bind:href',  $downloadURL );
-$addtocalendar->addClass('mt-16 mb-10');
+$addtocalendar->addClass('mt-16 mb-10 add-to-calendar');
 $thankyoufooter = new HTML\Text('Works with Google Calendar, Apple Calendar and Outlook.', 'subtitle-2');
 $thankyou = new Layout\Container ( $thankyouheadline.$thankyoubody.$addtocalendar.$thankyoufooter );
 $thankyou->attr('v-show', sprintf("currentView=='thankyou' && %s === true ", __vModel('signin.signed') ) );
